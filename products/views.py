@@ -9,7 +9,7 @@ class ProductsVieset(
     viewsets.GenericViewSet
 ):
     serializer_class = ProductSerializer
-    query_set = Product.objects.order_by("pk")
+    queryset = Product.objects.order_by("pk")
 
 class UnitsVieset(
     mixins.RetrieveModelMixin,
@@ -17,7 +17,7 @@ class UnitsVieset(
     viewsets.GenericViewSet
 ):
     serializer_class = UnitSerializer
-    query_set = Unit.objects.order_by("pk")
+    queryset = Unit.objects.order_by("pk")
 
 class BrandsVieset(
     mixins.RetrieveModelMixin,
@@ -25,4 +25,4 @@ class BrandsVieset(
     viewsets.GenericViewSet
 ):
     serializer_class = BrandSerializer
-    query_set = Brand.objects.order_by("pk")
+    queryset = Brand.objects.order_by("pk")

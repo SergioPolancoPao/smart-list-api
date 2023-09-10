@@ -2,6 +2,9 @@ from rest_framework import serializers
 from .models import Product, Unit, Brand
 
 class ProductSerializer(serializers.ModelSerializer):
+    unit = serializers.CharField(source="unit.name", read_only=True)
+    brand = serializers.CharField(source="brand.name", read_only=True)
+
     class Meta:
         model = Product
         fields: list[str] = [
@@ -9,7 +12,9 @@ class ProductSerializer(serializers.ModelSerializer):
             "name",
             "size",
             "created_at",
-            "searches"
+            "searches",
+            "unit",
+            "brand"
         ]
 
         read_only_fields: list[str] = ["pk", "searches"]

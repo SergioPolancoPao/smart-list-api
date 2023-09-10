@@ -12,9 +12,11 @@ class ListsViewSet(
     viewsets.GenericViewSet
 ):
     serializer_class = ListSerializer
-    query_set = List.objects.order_by("pk")
+    queryset = List.objects.order_by("pk")
 
-    def post(self, request) -> Response:
-        list = create_list(request)
+    def create(self, request) -> Response:
+        print('dsfsfa', request.data["products"])
+        products = request.data["products"]
+        list = create_list(products)
         serialized = self.get_serializer(list)
-        return Response(serialized)
+        return Response(serialized.data)
