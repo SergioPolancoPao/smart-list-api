@@ -4,12 +4,14 @@ from django.core import exceptions
 from products.models import Product, Brand, Unit
 from lists.models import List
 
+
 class ProductAbstract:
     def __init__(self, name: str, size: int, brand: str, unit: str) -> None:
         self.name: str = name
         self.size: int = size
         self.brand: str = brand
         self.unit: str = unit
+
 
 @transaction.atomic()
 def create_list(products: list[ProductAbstract]) -> List:
@@ -44,10 +46,7 @@ def create_list(products: list[ProductAbstract]) -> List:
             product.save(update_fields=["searches"])
         except exceptions.ObjectDoesNotExist:
             product = Product(
-                name=product_name,
-                size=product_size,
-                brand=brand,
-                unit=unit
+                name=product_name, size=product_size, brand=brand, unit=unit
             )
             product.save()
 

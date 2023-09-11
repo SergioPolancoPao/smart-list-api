@@ -30,5 +30,5 @@ router.registry.extend(product_router.registry)
 
 urlpatterns: list[URLResolver] = [
     path("api/", include(router.urls)),
-    path('admin/', admin.site.urls),
+    path("admin/", admin.site.urls),
 ]

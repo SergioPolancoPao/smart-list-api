@@ -3,6 +3,7 @@ from .models import List
 from products.models import Product
 from products.serializers import ProductSerializer
 
+
 class ListSerializer(serializers.ModelSerializer):
     products = ProductSerializer(many=True, read_only=True)
 
