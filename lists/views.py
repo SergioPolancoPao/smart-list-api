@@ -16,8 +16,7 @@ class ListsViewSet(
     queryset = List.objects.order_by("pk")
 
     def create(self, request) -> Response:
-        print("dsfsfa", request.data["products"])
         products = request.data["products"]
-        list = create_list(products)
+        list: List = create_list(products)
         serialized = self.get_serializer(list)
         return Response(serialized.data)
