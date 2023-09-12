@@ -1,12 +1,8 @@
 from django.db import transaction
-from django.db.models import F
-from django.core import exceptions
 from typing import TypedDict
-from products.models import Product, Brand, Unit
+from products.models import Product
 from products.services import (
-    create_brand_or_update_searches,
     create_product_or_update_searches,
-    create_unit_or_update_searches,
 )
 from lists.models import List
 
