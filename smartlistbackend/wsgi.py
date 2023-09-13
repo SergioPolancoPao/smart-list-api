@@ -12,6 +12,6 @@ from wsgiref.handlers import CGIHandler
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'smartlistbackend.settings')
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "smartlistbackend.settings")
 
 application: CGIHandler = get_wsgi_application()
