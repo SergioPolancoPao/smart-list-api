@@ -1,10 +1,7 @@
 from rest_framework import mixins, viewsets
-from rest_framework.response import Response
 
 from .models import List
 from .serializers import ListSerializer
-from .services import create_list
-
 
 class ListsViewSet(
     mixins.RetrieveModelMixin,
@@ -14,9 +11,3 @@ class ListsViewSet(
 ):
     serializer_class = ListSerializer
     queryset = List.objects.order_by("pk")
-
-    def create(self, request) -> Response:
-        products = request.data["products"]
-        list: List = create_list(products)
-        serialized = self.get_serializer(list)
-        return Response(serialized.data)

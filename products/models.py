@@ -4,7 +4,7 @@ from django.db import models
 class Unit(models.Model):
     name = models.CharField(max_length=50, unique=True)
     created_at = models.DateTimeField(auto_now_add=True)
-    searches = models.PositiveBigIntegerField(default=0)
+    searches = models.PositiveBigIntegerField(default=1)
 
     class Meta:
         db_table: str = "unit"
@@ -13,7 +13,7 @@ class Unit(models.Model):
 class Brand(models.Model):
     name = models.CharField(max_length=50, unique=True)
     created_at = models.DateTimeField(auto_now_add=True)
-    searches = models.PositiveBigIntegerField(default=0)
+    searches = models.PositiveBigIntegerField(default=1)
 
     class Meta:
         db_table: str = "brand"
@@ -25,7 +25,7 @@ class Product(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     unit = models.ForeignKey(Unit, null=True, on_delete=models.DO_NOTHING)
     brand = models.ForeignKey(Brand, null=True, on_delete=models.DO_NOTHING)
-    searches = models.PositiveBigIntegerField(default=0)
+    searches = models.PositiveBigIntegerField(default=1)
 
     class Meta:
         db_table: str = "product"

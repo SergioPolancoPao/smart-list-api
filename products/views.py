@@ -8,18 +8,18 @@ class ProductsVieset(
     mixins.RetrieveModelMixin, mixins.ListModelMixin, viewsets.GenericViewSet
 ):
     serializer_class = ProductSerializer
-    queryset = Product.objects.order_by("pk")
+    queryset = Product.objects.order_by("-searches")
 
 
 class UnitsVieset(
     mixins.RetrieveModelMixin, mixins.ListModelMixin, viewsets.GenericViewSet
 ):
     serializer_class = UnitSerializer
-    queryset = Unit.objects.order_by("pk")
+    queryset = Unit.objects.order_by("-searches")
 
 
 class BrandsVieset(
     mixins.RetrieveModelMixin, mixins.ListModelMixin, viewsets.GenericViewSet
 ):
     serializer_class = BrandSerializer
-    queryset = Brand.objects.order_by("pk")
+    queryset = Brand.objects.order_by("-searches")
