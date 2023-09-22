@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models import F
 
 
 class Unit(models.Model):
@@ -29,3 +30,17 @@ class Product(models.Model):
 
     class Meta:
         db_table: str = "product"
+
+    def update_when_used(self, unit: Unit = None, brand: Brand = None):
+        update_fields: list[str] = ["searches"]
+        self.searches: F = F("searches") + 1
+
+        if brand:
+            self.brand: Brand = brand
+            update_fields.append("brand")
+
+        if unit:
+            self.unit: Unit = unit
+            update_fields.append("unit")
+
+        self.save(update_fields=update_fields)
