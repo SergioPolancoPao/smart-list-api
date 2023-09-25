@@ -9,11 +9,12 @@ class ListSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = List
-        fields: list[str] = ["pk", "products", "created_at"]
+        fields: list[str] = ["pk", "name", "products", "created_at"]
 
         read_only_fields: list[str] = ["pk"]
 
     def create(self, validated_data) -> List:
         products_data = validated_data.pop("products")
-        list: List = create_list(products_data)
+        list_name = validated_data["name"]
+        list: List = create_list(list_name, products_data)
         return list

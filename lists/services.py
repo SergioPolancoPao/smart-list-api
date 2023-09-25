@@ -15,8 +15,9 @@ class ProductAbstract(TypedDict):
 
 
 @transaction.atomic()
-def create_list(products: list[ProductAbstract]) -> List:
+def create_list(name: str, products: list[ProductAbstract]) -> List:
     list = List()
+    list.name = name
     list.save()
 
     for product_data in products:

@@ -5,6 +5,7 @@ from django.db.models import F
 class Unit(models.Model):
     name = models.CharField(max_length=50, unique=True)
     created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
     searches = models.PositiveBigIntegerField(default=1)
 
     class Meta:
@@ -14,6 +15,7 @@ class Unit(models.Model):
 class Brand(models.Model):
     name = models.CharField(max_length=50, unique=True)
     created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
     searches = models.PositiveBigIntegerField(default=1)
 
     class Meta:
@@ -24,6 +26,7 @@ class Product(models.Model):
     name = models.CharField(max_length=100, unique=True)
     size = models.IntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
     unit = models.ForeignKey(Unit, null=True, on_delete=models.DO_NOTHING)
     brand = models.ForeignKey(Brand, null=True, on_delete=models.DO_NOTHING)
     searches = models.PositiveBigIntegerField(default=1)
